@@ -16,24 +16,22 @@ const theme = createTheme();
 
 
 export default function Login() {
-
-  //set username 
-  const [username,setUsername]=useState("") 
-  const postdata = (data) => { 
+  const [username,setUsername]=useState("")
+  const postdata = (data) => {
     axios.post("http://localhost:9100/auth/authenticate", data).then(  
       (response) => {
         //success
         console.log(response, "============");
         console.log(response.data)
-        localStorage.setItem("Authorization", response.data) // the stored data is saved across browser sessions and the data stored has no expiration time.
+        localStorage.setItem("Authorization", response.data)
         console.log("Authorization", localStorage.getItem("Authorization"))
         localStorage.setItem("isLoggedIn",true)
         alert("Login done")
-        window.location = "/checklist";// redirect ro checklist
-    console.log("successs"); 
+        window.location = "/checklist";
+        console.log("successs");
       }, (error) => {
         //error
-        window.alert(error  ) 
+        window.alert(error)
         console.log(error);
         console.log("failed +++++++++++++++++++")
       }
@@ -43,7 +41,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     console.log(login, "+++++++++++++++++++");
     postdata(login);
-    e.preventDefault();  //
+    e.preventDefault();
   };
 
   return (
@@ -63,18 +61,12 @@ export default function Login() {
                 borderRadius: '5%',
               }}
             >
-              <Avatar
-               sx={{ m: 1, bgcolor: 'secondary.main' } //siging logo
-              }
-              >
+              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                 <LockOutlinedIcon />
-
-
               </Avatar>
-          <h5>
-            Sign in
-            </h5>                
-
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
               <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, ml: 2, mr: 2 }}>
                 <TextField
                   margin="normal"

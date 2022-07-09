@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -7,6 +7,8 @@ import CheckList from './components/CheckList';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Login from './components/Login';
+import ServerError from './components/ServerError';
+import Severity from './components/Severity';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
       <Header/>
       <Switch>
         <Route path="/login" component={Login}/>
-       </Switch>
+        <Route path="/checklist" component={CheckList}/>
+        <Route path="/servererror" component={ServerError}/>
+      </Switch>
       <Footer/>
     
     </div>
